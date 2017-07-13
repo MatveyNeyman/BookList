@@ -3,5 +3,16 @@
   <h1>
     Welcome to {{title}}!
   </h1>
+  <div *ngFor="let book of books">
+    <span>
+      {{ book.header }}
+    </span>
+    <span>
+      {{ book.publishYear }}
+    </span>
+    <span>
+      {{ book.ISBN }}
+    </span>
+  </div>
 </div>
 
