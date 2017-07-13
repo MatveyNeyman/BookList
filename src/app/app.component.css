@@ -1,0 +1,52 @@
+table.master-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table.master-table,
+.master-table th,
+.master-table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.master-table th,
+.master-table td {
+    padding: 5px;
+    text-align: left;
+}
+
+.table-row:hover {
+    background-color: azure;
+    cursor: pointer;
+}
+
+.del-book-cell:hover,
+.add-book-cell:hover {
+    background-color: initial;
+    cursor: initial;
+}
+
+.details {
+    text-align: left;
+}
+
+.del-button:hover,
+.add-button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.del-button,
+.add-button {
+    font-size: 0.8em;
+}
+
+.authors-table {
+    border-spacing: 0;
+}
+
+.book-spec {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

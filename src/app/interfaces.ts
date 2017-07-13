@@ -4,7 +4,7 @@ export interface IBook {
     length: number; // book's length
     publisher?: string;
     publishYear: number;
-    issueYear: Date;
+    issueDate: string;
     ISBN: number;
     image?: string;
 }

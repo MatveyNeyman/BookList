@@ -1,25 +1,22 @@
 import { IBook } from '../app/exports';
- 
-const dateOne = new Date("Thu Jul 13 1911 19:06:51 GMT+0300 (Russia TZ 2 Standard Time)");
-const dateTwo = new Date("Thu Jul 13 2000 19:06:51 GMT+0300 (Russia TZ 2 Standard Time)");
 
 export const BOOKS: IBook[] = [
     {
         header: "First book",
         authors: [
             {
-                firstName: "First author name",
-                lastName: "First author surname"
+                firstName: "Jill",
+                lastName: "Smith"
             },
             {
-                firstName: "Second author name",
-                lastName: "Second author surname"
+                firstName: "Eve",
+                lastName: "Jackson"
             }
         ],
         length: 500,
         publisher: "Best printing house",
         publishYear: 1910,
-        issueYear: dateOne,
+        issueDate: "01.03.1911",
         ISBN: 123456789,
         image: null
     },
@@ -27,20 +24,23 @@ export const BOOKS: IBook[] = [
         header: "Second book",
         authors: [
             {
-                firstName: "First author name",
-                lastName: "First author surname"
+                firstName: "John",
+                lastName: "Doe"
             },
             {
-                firstName: "Second author name",
-                lastName: "Second author surname"
+                firstName: "Erich",
+                lastName: "Gamma"
             }
         ],
         length: 500,
         publisher: "Worst printing house",
         publishYear: 2000,
-        issueYear: dateTwo,
+        issueDate: "04.06.2002",
         ISBN: 987654321,
         image: null
     },
 ];
 
+// Richard Helm,
+// Ralph Johnson,
+// John Vlissides
