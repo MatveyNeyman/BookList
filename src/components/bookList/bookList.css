@@ -1,0 +1,25 @@
+table.master-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table.master-table,
+.master-table th,
+.master-table td {
+    border-collapse: collapse;
+}
+
+.master-table th,
+.master-table td {
+    padding: 5px;
+    text-align: left;
+}
+
+.table-row:hover {
+    background-color: lightskyblue;
+    cursor: pointer;
+}
+
+.del-book-cell {
+    background-color: white;    
+}

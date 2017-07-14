@@ -1,6 +1,6 @@
-import { IBook } from '../app/exports';
+import { Book } from '../app/exports';
 
-export const BOOKS: IBook[] = [
+export let books: Book[] = [
     {
         header: "First book",
         authors: [

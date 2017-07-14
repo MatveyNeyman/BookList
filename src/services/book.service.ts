@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { IBook, BOOKS } from '../app/exports';
+import { Book, books } from '../app/exports';
 
 @Injectable()
 export class BookService {
-  getBooks(): IBook[] {
-    return BOOKS;
+  getBooks(): Book[] {
+    return books;
+  }
+
+  addBook(book: Book): void {
+    books.push(book);
   }
 }
