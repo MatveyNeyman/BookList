@@ -14,7 +14,7 @@ export class BookList implements OnInit {
   public selectedBook: Book;
   public isAddBook: boolean = false;
 
-  constructor(private bookService: BookService,
+  constructor(public bookService: BookService,
               private httpService: HttpService) { }
 
   ngOnInit(): void {

@@ -95,7 +95,7 @@ export class BookDetails implements OnInit, OnChanges {
     }
   }
 
-  private isIssueDateValid(): boolean {
+  public isIssueDateValid(): boolean {
     let date = this.book.issueDate.split(".");
     let day = date[0];
     let month = date[1];
@@ -137,7 +137,7 @@ export class BookDetails implements OnInit, OnChanges {
     return true;  
   }
 
-  private isISBNValid(): boolean {
+  public isISBNValid(): boolean {
     if (this.book.ISBN) {
       // Algorithms taken from wikipedia
       if (this.book.ISBN.length === 10) {
