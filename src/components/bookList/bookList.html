@@ -1,5 +1,7 @@
 <h3>Books list</h3>
 
+<button (click)="uploadList()" [disabled]="isAddBook || selectedBook">Upload</button> 
+
 <table class="master-table">
   <tr>
     <th>Header</th>

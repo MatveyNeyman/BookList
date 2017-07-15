@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { SlicePipe } from '@angular/common';
 
-import { BookService, Book, Author } from '../../app/exports';
+import { BookService, HttpService, Book, Author } from '../../app/exports';
 
 @Component({
   selector: 'book-list',
   templateUrl: './bookList.html',
   styleUrls: ['./bookList.css'],
-  providers: [BookService]
+  providers: [HttpService]
 })
 export class BookList implements OnInit {
   public books: Array<Book>;
   public selectedBook: Book;
   public isAddBook: boolean = false;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+              private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.getBooks();
   }
 
   getBooks(): void {
-    this.books = this.bookService.getBooks();
+    this.httpService.getData().subscribe(result => {
+      this.books = this.bookService.books = result;
+    });
   }
 
   onSelect(book: Book): void {
@@ -44,5 +47,11 @@ export class BookList implements OnInit {
   onClearDetails(): void {
     this.isAddBook = false;
     this.selectedBook = null;
+  }
+  
+  uploadList(): void {
+    this.httpService.postData(this.books).subscribe(result => {
+      console.log(result);
+    });
   }
 }

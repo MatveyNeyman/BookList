@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 
-import { Book, books } from '../app/exports';
+import { Book } from '../app/exports';
 
 @Injectable()
 export class BookService {
+  public books: Array<Book>;
+
   getBooks(): Book[] {
-    return books;
+    return this.books;
   }
 
   addBook(book: Book): void {
-    books.push(book);
+    this.books.push(book);
   }
 }

@@ -21,3 +21,11 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.image-box {
+    height: 100px;
+    width: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

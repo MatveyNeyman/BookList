@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 
-import { Home, BookList, BookDetails, LayoutExercise  } from './exports';
+import { Home, BookList, BookDetails, LayoutExercise, BookService } from './exports';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,13 @@ import { Home, BookList, BookDetails, LayoutExercise  } from './exports';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    HttpModule,
+    JsonpModule
   ],
-  providers: [],
+  providers: [
+    BookService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

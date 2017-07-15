@@ -1,7 +1,7 @@
 <div class="details">
   <div class="book-spec">
     <div>Header</div>
-    <input [(ngModel)]="book.header" placeholder="Header"/>
+    <input type="text" [(ngModel)]="book.header" placeholder="Header" maxlength="30"/>
   </div>
 
   <div class="book-spec">
@@ -9,18 +9,18 @@
     <table class="authors-table">
       <tr>
         <td>
-          <input [(ngModel)]="book.authors[0].firstName" placeholder="First Name"/>
+          <input type="text" [(ngModel)]="book.authors[0].firstName" placeholder="First Name" maxlength="20"/>
         </td>
         <td>
-          <input [(ngModel)]="book.authors[0].lastName" placeholder="Last Name"/>
+          <input type="text" [(ngModel)]="book.authors[0].lastName" placeholder="Last Name" maxlength="20"/>
         </td>
       </tr>
       <tr *ngFor="let author of book.authors | slice:1">
         <td>
-          <input [(ngModel)]="author.firstName" placeholder="First Name"/>
+          <input type="text" [(ngModel)]="author.firstName" placeholder="First Name" maxlength="20"/>
         </td>
         <td>
-          <input [(ngModel)]="author.lastName" placeholder="Last Name"/>
+          <input type="text" [(ngModel)]="author.lastName" placeholder="Last Name" maxlength="20"/>
         </td>
         <td>
           <span class="del-button" (click)="onDeleteAuthor(author)">Delete</span>
@@ -61,8 +61,12 @@
 
   <div class="book-spec">
     <div>Image</div>
+    <div class="image-box" [style.backgroundImage]="this.book.image ? 'url(../../public/book_images/' + this.book.image + ')' : ''"></div>
+    <form method="post" enctype="multipart/form-data" action="fileupload">
+        <input #fileInput type="file" name="filetoupload">
+        <input type="submit" value="Submit" (click)="uploadImage()">
+    </form>
   </div>
 
   <button (click)="onSave()">Save</button>
-
 </div>
