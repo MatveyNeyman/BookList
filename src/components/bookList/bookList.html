@@ -1,24 +1,42 @@
-<h3>Books list</h3>
-
-<button (click)="uploadList()" [disabled]="isAddBook || selectedBook">Upload</button> 
+<button class="upload-btn" (click)="uploadList()" [disabled]="isAddBook || selectedBook">
+  Upload list to server
+</button> 
 
 <table class="master-table">
   <tr>
-    <th>Header</th>
-    <th>Author</th> 
-    <th>Published</th>
+    <th (click)="onSortByHeader()">
+      Header
+      <span class="sort-icon" *ngIf="bookService.isSortByHeader" [ngClass]="bookService.sortDirection"></span>
+    </th>
+    <th (click)="onSortByYear()">
+      Published
+      <span class="sort-icon" *ngIf="bookService.isSortByYear" [ngClass]="bookService.sortDirection"></span>
+    </th>
+    <th>
+      Author
+    </th> 
   </tr>
-  <tr class="table-row" *ngFor="let book of books" (click)="onSelect(book)">
-    <td>{{ book.header }}</td>
-    <td>{{ book.authors[0].firstName }} {{ book.authors[0].lastName }}</td>
-    <td>{{ book.publishYear }}</td>
+  <tr class="table-row" *ngFor="let book of books" [class.selected]="book === selectedBook" (click)="onSelect(book)">
+    <td>
+      {{ book.header }}
+    </td>
+    <td>
+      {{ book.publishYear }}
+    </td>
+    <td>
+      {{ book.authors[0].firstName }} {{ book.authors[0].lastName }}
+    </td>
     <td class="del-book-cell">
-      <button class="del-button" (click)="onDeleteBook(book)">Delete</button>
+      <button class="del-button" (click)="onDeleteBook(book)">
+        Delete book
+      </button>
     </td>
   </tr>
   <tr>
-    <td>
-        <button class="add-button" (click)="onAddBook()" [disabled]="isAddBook">Add</button> 
+    <td class="add-book-cell">
+        <button class="add-button" (click)="onAddBook()" [disabled]="isAddBook">
+          Add new book
+        </button> 
     </td>
   </tr>
 </table>
@@ -29,6 +47,6 @@
 </div>
 
 <div *ngIf="isAddBook">
-  <h3>Add new book</h3>
+  <h3>Create new book</h3>
   <book-details (destroySelf)="onClearDetails()"></book-details>
 </div>

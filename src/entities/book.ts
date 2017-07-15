@@ -1,15 +1,19 @@
 import { Author } from '../app/exports';
+import { UUID } from 'angular2-uuid';
 
 export class Book {
+    id: string;
     header: string;
     authors: Array<Author>;
     length: number; // book's length
     publisher?: string;
     publishYear: number;
     issueDate: string;
-    ISBN: number;
+    ISBN: string;
     image?: string;
     constructor() {
+        this.id = UUID.UUID();
+        
         this.header = "";
 
         let author: Author = new Author();

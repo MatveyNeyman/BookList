@@ -1,3 +1,7 @@
+.upload-btn {
+    margin: 20px;
+}
+
 table.master-table {
     width: 100%;
     table-layout: fixed;
@@ -13,6 +17,11 @@ table.master-table,
 .master-table td {
     padding: 5px;
     text-align: left;
+    border: 1px solid lightgrey;
+}
+
+.master-table th {
+    background-color: aliceblue;
 }
 
 .table-row:hover {
@@ -20,6 +29,32 @@ table.master-table,
     cursor: pointer;
 }
 
-.del-book-cell {
-    background-color: white;    
+.master-table td.del-book-cell,
+.master-table td.add-book-cell {
+    background-color: white;
+    border: none;   
+}
+
+.selected {
+    background-color: lightskyblue;
+}
+
+.sort-icon {
+    position: relative;
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    opacity: 0.3;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.arrow-up {
+    background-image: url(../../assets/sort-up.png);
+}
+
+.arrow-down {
+    background-image: url(../../assets/sort-down.png);
 }

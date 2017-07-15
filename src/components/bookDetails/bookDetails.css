@@ -1,5 +1,5 @@
-.details {
-    text-align: left;
+.image-cell {
+    vertical-align: top;
 }
 
 .del-button:hover,
@@ -25,7 +25,17 @@
 .image-box {
     height: 100px;
     width: 100px;
+    margin-top: 10px;
+    background-image: url(../../assets/photo-camera.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.invalid-value {
+    background-color: red;
+}
+
+.image-btns {
+    margin-top: 10px;
 }

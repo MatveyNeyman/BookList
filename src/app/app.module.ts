@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+import { TextMaskModule } from 'angular2-text-mask';
+import { CustomFormsModule } from 'ng2-validation';
+
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 
@@ -22,7 +25,9 @@ import { Home, BookList, BookDetails, LayoutExercise, BookService } from './expo
     FormsModule,
     RouterModule.forRoot(AppRoutes),
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    TextMaskModule,
+    CustomFormsModule
   ],
   providers: [
     BookService

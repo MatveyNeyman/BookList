@@ -30,6 +30,7 @@
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "formidable": "^1.1.1",
+    "ng2-validation": "^4.2.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

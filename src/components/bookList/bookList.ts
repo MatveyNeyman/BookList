@@ -24,6 +24,27 @@ export class BookList implements OnInit {
   getBooks(): void {
     this.httpService.getData().subscribe(result => {
       this.books = this.bookService.books = result;
+      if (typeof(Storage) !== "undefined") {
+          this.bookService.sortDirection = localStorage.getItem("sortDirection");
+          let sortColumn = localStorage.getItem("sortColumn");
+          switch (sortColumn) {
+            case "header":
+              this.bookService.isSortByHeader = true;
+              this.bookService.isSortByYear = false;
+              break;
+            case "year":
+              this.bookService.isSortByHeader = false;
+              this.bookService.isSortByYear = true;
+              break;
+            default:
+              break;
+          }
+          if (this.bookService.sortDirection && sortColumn) {
+            this.bookService.sortBooks();
+          }
+      } else {
+          console.log("Sorry! No Web Storage support");
+      }
     });
   }
 
@@ -53,5 +74,19 @@ export class BookList implements OnInit {
     this.httpService.postData(this.books).subscribe(result => {
       console.log(result);
     });
+  }
+
+  onSortByHeader(): void {
+    this.bookService.isSortByYear = false;
+    this.bookService.isSortByHeader = true;
+    this.bookService.changeSortDirection();
+    this.bookService.sortByHeader();
+  }
+  
+  onSortByYear(): void {
+    this.bookService.isSortByHeader = false;
+    this.bookService.isSortByYear = true;
+    this.bookService.changeSortDirection();
+    this.bookService.sortByYear();
   }
 }

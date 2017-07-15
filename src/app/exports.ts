@@ -4,7 +4,6 @@ export * from '../entities/author';
 
 // Services
 export * from '../services/book.service';
-export * from '../services/mock-books';
 export * from '../services/http.service';
 
 // Components

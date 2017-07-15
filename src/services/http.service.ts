@@ -6,13 +6,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HttpService {
-    // private getListUrl = 'http://localhost:8080/get-list';
-    // private postListUrl = 'http://localhost:8080/post-list';
-    // private postImageUrl = 'http://localhost:8080/post-image';
+    private getListUrl = 'http://localhost:8080/get-list';
+    private postListUrl = 'http://localhost:8080/post-list';
+    private postImageUrl = 'http://localhost:8080/post-image';
     
-    private getListUrl = 'https://book-list-matvey-neyman.herokuapp.com/get-list';
-    private postListUrl = 'https://book-list-matvey-neyman.herokuapp.com/post-list';
-    private postImageUrl = 'https://book-list-matvey-neyman.herokuapp.com/post-image';
+    // private getListUrl = 'https://book-list-matvey-neyman.herokuapp.com/get-list';
+    // private postListUrl = 'https://book-list-matvey-neyman.herokuapp.com/post-list';
+    // private postImageUrl = 'https://book-list-matvey-neyman.herokuapp.com/post-image';
     
     constructor (private http: Http) { }
     

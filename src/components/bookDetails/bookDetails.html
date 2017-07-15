@@ -1,72 +1,85 @@
-<div class="details">
-  <div class="book-spec">
-    <div>Header</div>
-    <input type="text" [(ngModel)]="book.header" placeholder="Header" maxlength="30"/>
-  </div>
+<table>
+  <tr>
+    <td class="image-cell">
+      <div class="book-spec">
+        <div>Image</div>
+        <div class="image-box" [style.backgroundImage]="this.book.image ? 'url(../../public/book_images/' + this.book.image + ')' : ''"></div>
+        <form method="post" enctype="multipart/form-data" action="fileupload">
+          <div class="image-btns">
+            <input #fileInput type="file" name="filetoupload">
+          </div>
+          <div class="image-btns">
+            <input type="submit" value="Submit" (click)="uploadImage()">
+          </div>
+        </form>
+      </div>
+    </td>
+    <td>
+      <div class="book-spec">
+        <div>Header</div>
+        <input type="text" [class.invalid-value]="!book.header && isSaveClicked"
+          [(ngModel)]="book.header" placeholder="Header" maxlength="30"/>
+      </div>
+      <div class="book-spec">
+        <div>Authors</div>      
+        <table class="authors-table">
+          <tr>
+            <td>
+              <input type="text" [class.invalid-value]="!book.authors[0].firstName && isSaveClicked"
+                [(ngModel)]="book.authors[0].firstName" placeholder="First Name" maxlength="20"/>
+            </td>
+            <td>
+              <input type="text" [class.invalid-value]="!book.authors[0].lastName && isSaveClicked"
+                [(ngModel)]="book.authors[0].lastName" placeholder="Last Name" maxlength="20"/>
+            </td>
+          </tr>
+          <tr *ngFor="let author of book.authors | slice:1">
+            <td>
+              <input type="text" [class.invalid-value]="!author.firstName && isSaveClicked"
+                [(ngModel)]="author.firstName" placeholder="First Name" maxlength="20"/>
+            </td>
+            <td>
+              <input type="text" [class.invalid-value]="!author.lastName && isSaveClicked"
+                [(ngModel)]="author.lastName" placeholder="Last Name" maxlength="20"/>
+            </td>
+            <td>
+              <span class="del-button" (click)="onDeleteAuthor(author)">Delete</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="add-button" (click)="onAddAuthor()">Add</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="book-spec">
+        <div>Total pages</div>
+        <input type="number" [class.invalid-value]="(!book.length && isSaveClicked) || (lengthField.errors?.min || lengthField.errors?.max)"
+          [(ngModel)]="book.length" name="lengthField" #lengthField="ngModel" [min]="1" [max]="10000" placeholder="Length"/>
+      </div>
+      <div class="book-spec">
+        <div>Publisher</div>
+        <input [(ngModel)]="book.publisher" placeholder="Publisher" maxlength="30"/>
+      </div>
+      <div class="book-spec">
+        <div>Published in</div>
+        <input type="number" [class.invalid-value]="(!book.publishYear && isSaveClicked) || (yearField.errors?.min || yearField.errors?.max)"
+          [(ngModel)]="book.publishYear" name="yearField" #yearField="ngModel" [min]="1800" [max]="getCurrentYear()" placeholder="YYYY"/>
+      </div>
+      <div class="book-spec">
+        <div>Issued in</div>
+        <input type="text" [class.invalid-value]="!isIssueDateValid() && isSaveClicked"
+          [textMask]="{ mask: dateMask }" [(ngModel)]="book.issueDate" placeholder="DD.MM.YYYY"/>
+      </div>
+      <div class="book-spec">
+        <div>ISBN</div>
+        <input type="text" [class.invalid-value]="!isISBNValid() && isSaveClicked"
+          [(ngModel)]="book.ISBN" placeholder="ISBN" maxlength="13"/>  <!--[textMask]="{ mask: isbnMask }" -->
+      </div>
+    </td>
+  </tr>
+</table>
 
-  <div class="book-spec">
-    <div>Authors</div>      
-    <table class="authors-table">
-      <tr>
-        <td>
-          <input type="text" [(ngModel)]="book.authors[0].firstName" placeholder="First Name" maxlength="20"/>
-        </td>
-        <td>
-          <input type="text" [(ngModel)]="book.authors[0].lastName" placeholder="Last Name" maxlength="20"/>
-        </td>
-      </tr>
-      <tr *ngFor="let author of book.authors | slice:1">
-        <td>
-          <input type="text" [(ngModel)]="author.firstName" placeholder="First Name" maxlength="20"/>
-        </td>
-        <td>
-          <input type="text" [(ngModel)]="author.lastName" placeholder="Last Name" maxlength="20"/>
-        </td>
-        <td>
-          <span class="del-button" (click)="onDeleteAuthor(author)">Delete</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="add-button" (click)="onAddAuthor()">Add</span>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="book-spec">
-    <div>Total pages</div>
-    <input [(ngModel)]="book.length" placeholder="Length"/>
-  </div>
-
-  <div class="book-spec">
-    <div>Publisher</div>
-    <input [(ngModel)]="book.publisher" placeholder="Publisher"/>
-  </div>
-
-  <div class="book-spec">
-    <div>Published in</div>
-    <input [(ngModel)]="book.publishYear" placeholder="YYYY"/>
-  </div>
-
-  <div class="book-spec">
-    <div>Issued in</div>
-    <input [(ngModel)]="book.issueDate" placeholder="DD.MM.YYYY"/>
-  </div>
-
-  <div class="book-spec">
-    <div>ISBN</div>
-    <input [(ngModel)]="book.ISBN" placeholder="ISBN"/>
-  </div>
-
-  <div class="book-spec">
-    <div>Image</div>
-    <div class="image-box" [style.backgroundImage]="this.book.image ? 'url(../../public/book_images/' + this.book.image + ')' : ''"></div>
-    <form method="post" enctype="multipart/form-data" action="fileupload">
-        <input #fileInput type="file" name="filetoupload">
-        <input type="submit" value="Submit" (click)="uploadImage()">
-    </form>
-  </div>
-
-  <button (click)="onSave()">Save</button>
-</div>
+<button (click)="onSave()">Save</button>
+<button (click)="onCancel()">Cancel</button>
