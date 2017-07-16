@@ -1,1 +1,20 @@
-Lyout Exercise
+<button (click)="onSwitchDirection()">
+    Switch direction
+</button>
+
+<div class="form" [class.rtl-dir]="isRTL">
+    <div class="line-wrapper">
+        <div class="input-wrapper">
+            <input type="text">
+        </div>
+        <div class="gap"></div>
+        <div class="button-wrapper">
+            <button>
+                Send code
+            </button>
+        </div>
+    </div>
+    <div class="hint-phrase">
+        Example: 72A22EF8-8766-4359-3978-EBBAC445687A
+    </div>
+</div>

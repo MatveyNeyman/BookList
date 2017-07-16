@@ -1,0 +1,53 @@
+.rtl-dir {
+    direction: rtl;
+}
+
+.form {
+    margin-top: 15px;
+}
+
+.input-wrapper input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.gap {
+    width: 15px;
+}
+
+
+/* Solution 1 */
+
+.line-wrapper {
+    display: flex;
+}
+
+.input-wrapper {
+    flex-grow: 1;
+}
+
+.button-wrapper {
+    flex-grow: 0;
+}
+
+/****/
+
+/* Solution 2 */
+/*
+.line-wrapper {
+    display: table;
+}
+
+.input-wrapper {
+    column-width: 100vw;
+}
+
+.gap {
+    display: table-cell;
+}
+
+.button-wrapper button {
+    white-space: nowrap;
+}
+*/
+/****/

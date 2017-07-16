@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./layoutExercise.css']
 })
 export class LayoutExercise {
-    
+  public isRTL: boolean = false;
+  onSwitchDirection() {
+    this.isRTL = !this.isRTL;
+  }
 }
