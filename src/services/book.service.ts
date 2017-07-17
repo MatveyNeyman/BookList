@@ -21,6 +21,9 @@ export class BookService implements OnInit {
   }
 
   public addBook(book: Book): void {
+    if (!this.books) {
+      this.books = [];
+    }
     this.books.push(book);
     if (this.sortDirection) {
       this.sortBooks();
